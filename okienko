@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.event.*;
+
 public class TextFieldExample implements ActionListener{
+
     JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13;
     JButton b1,b2,b3,b4,b5;
+
     TextFieldExample(){
         JFrame f= new JFrame("TextField Example");
 
@@ -47,7 +50,7 @@ public class TextFieldExample implements ActionListener{
         //i guziczki
 
         b1=new JButton("Oblicz powierzchnie");
-        b1.setBounds(50,400,30,30);
+        b1.setBounds(50,350,100,30);
         b1.addActionListener(this);
 
         b2=new JButton("biale");
@@ -80,18 +83,35 @@ public class TextFieldExample implements ActionListener{
         int b=Integer.parseInt(s2);
         int c=a*b;
 
-        String result=String.valueOf(c);
+        String dl2=t2.getText();
+        String wys2=t7.getText();
+        int dl22=Integer.parseInt(dl2);
+        int wys22=Integer.parseInt(wys2);
+        int pole2 = dl22*wys22;
+
+        String dl3=t3.getText();
+        String wys3=t8.getText();
+        int dl33=Integer.parseInt(dl3);
+        int wys33=Integer.parseInt(wys3);
+        int pole3 = dl33*wys33;
+
+        String dl4=t4.getText();
+        String wys4=t9.getText();
+        int dl44=Integer.parseInt(dl4);
+        int wys44=Integer.parseInt(wys4);
+        int pole4 = dl44*wys44;
+
+        String dl5=t5.getText();
+        String wys5=t10.getText();
+        int dl55=Integer.parseInt(dl5);
+        int wys55=Integer.parseInt(wys5);
+        int pole5 = dl55*wys55;
+
+        int suma = c+pole2+pole3+pole4+pole5;
+        String result=String.valueOf(suma);
         t11.setText(result);
-        String dupa = "biale";
-        if(b2.isSelected()){
-            t12.setText(dupa);
-        }
     }
-
-    public void wybranieKoloru(ActionEvent e){
-
-    }
+    
     public static void main(String[] args) {
         new TextFieldExample();
-
     } }
