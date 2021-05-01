@@ -110,8 +110,9 @@ public class TextFieldExample implements ActionListener{
         int suma = c+pole2+pole3+pole4+pole5;
         String result=String.valueOf(suma);
         t11.setText(result);
+
     }
-    
+
     public static void main(String[] args) {
         new TextFieldExample();
     } }
