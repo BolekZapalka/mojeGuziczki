@@ -1,118 +1,207 @@
+package chujMi;
+
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TextFieldExample implements ActionListener{
+public class chujMi extends JFrame {
 
-    JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13;
-    JButton b1,b2,b3,b4,b5;
+    private JPanel MainPanel;
+    private JButton biale;
+    private JButton czarne;
+    private JButton zielone;
+    private JButton czerwone;
+    private JTextField dlugoscSciany1;
+    private JTextField wysokoscSciany2;
+    private JTextField wysokoscSciany1;
+    private JTextField dlugoscSciany2;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton obliczPow;
+    private JButton getQuote;
+    private JTextField quoteFloor;
+    private JLabel labelFloorTiles;
+    private JButton HelpMeasuring;
+    private JButton siakieLVTButton;
+    private JButton TakieLVT;
+    private JLabel labelOther;
+    private JTextField textField3;
+    private JLabel labelLVTTiles;
+    private JLabel labelPowPodlogi;
+    private JTextField polePodlogiText;
+    private JLabel WallsOptionsLabel;
+    private JTextField wallsArea;
+    private Double powierzchnia;
+    private Double cenaZaMetr;
+    private Double quotePrice;
+    private Double powierzchniaPodlogi;
+    private Double powierzchniaScian;
+    private Double scianyDoPolowy;
+    private Double cenaZaSciany;
+    private Double roundOffPowierzchniaScian;
+    private Double cenaZaPodloge;
+    private Double roundOffPowierzchniaPodlogi;
 
-    TextFieldExample(){
-        JFrame f= new JFrame("TextField Example");
+    public chujMi() {
 
-        // labelujemy pola tekstowe
 
-        JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13;
-        l1 = new JLabel("lenght");
-        l1.setBounds(50,70,100,30);
+        biale.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            textField2.setText("white");
+            cenaZaMetr = 5.0;
+            cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+            cenaZaPodloge = cenaZaPodloge * 5.0;
+            quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
+        //czarne.setIcon(new ImageIcon(chujMi.class.getResource("/src/chujMi/obrazek1.png")));
+        //czarne.setIcon(new ImageIcon(chujMi.class.getResource("/chujMi/obrazek1.png")));
+        czarne.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField2.setText("black");
+                cenaZaMetr = 4.5;
+                cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+                cenaZaPodloge = cenaZaPodloge * 4.5;
+                quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
+        zielone.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField2.setText("green");
+                cenaZaMetr = 7.3;
+                cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+                cenaZaPodloge = cenaZaPodloge * 7.3;
+                quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
+        czerwone.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField2.setText("owakie LVT");
+                cenaZaMetr = 3.5;
+                cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+                cenaZaPodloge = cenaZaPodloge * 3.5;
+                quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
+        obliczPow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double lenght1;
+                double lenght2;
+                double height;
+                try{
+                     lenght1 = Double.parseDouble(dlugoscSciany1.getText());
+                }catch(NumberFormatException nfe){
+                    dlugoscSciany1.setText("enter number");
+                }
+                lenght1 = Double.parseDouble(dlugoscSciany1.getText());
 
-        //ustawiamy text fieldy
+                try{
+                    lenght2 = Double.parseDouble(dlugoscSciany2.getText());
+                }catch(NumberFormatException nfe){
+                    dlugoscSciany2.setText("enter number");
+                }
+                lenght2 = Double.parseDouble(dlugoscSciany2.getText());
+                try{
+                    height = Double.parseDouble(wysokoscSciany1.getText());
+                }catch(NumberFormatException nfe){
+                    wysokoscSciany1.setText("enter number");
+                }
+                height = Double.parseDouble(wysokoscSciany1.getText());
 
-        t1=new JTextField();
-        t1.setBounds(50,100, 200,30);
-        t2=new JTextField();
-        t2.setBounds(50,150, 200,30);
-        t3=new JTextField();
-        t3.setBounds(50,200, 200,30);
-        t4=new JTextField();
-        t4.setBounds(50,250, 200,30);
-        t5=new JTextField();
-        t5.setBounds(50,300, 200,30);
-        t6=new JTextField();
-        t6.setBounds(300,100, 200,30);
-        t7=new JTextField();
-        t7.setBounds(300,150, 200,30);
-        t8=new JTextField();
-        t8.setBounds(300,200, 200,30);
-        t9=new JTextField();
-        t9.setBounds(300,250, 200,30);
-        t10=new JTextField();
-        t10.setBounds(300,300, 200,30);
-        t11=new JTextField();
-        t11.setBounds(150,350, 200,30);
-        t11.setEditable(false);
-        t12=new JTextField();
-        t12.setBounds(400,350, 200,30);
-        t12.setEditable(false);
-        t13=new JTextField();
-        t13.setBounds(150,400,200,30);
-        t13.setEditable(false);
+                double powierzchniaPodlogi = (lenght1*lenght2);
+                double powierzchniaScian = 2*(lenght1*height) + 2*(lenght2 * height);
+                double powierzchnia = powierzchniaPodlogi + powierzchniaScian;
+                double scianyDoPolowy = powierzchnia/2;
 
-        //i guziczki
+                double roundOffPowierzchnia = (double) Math.round(powierzchnia * 100) / 100;
+                String resultPowierzchnia = String.valueOf(roundOffPowierzchnia);
 
-        b1=new JButton("Oblicz powierzchnie");
-        b1.setBounds(50,350,100,30);
-        b1.addActionListener(this);
+                double roundOffPowierzchniaPodlogi = (double) Math.round(powierzchniaPodlogi*100)/100;
+                String resultPowierzchniaPodlogi = String.valueOf(roundOffPowierzchniaPodlogi);
 
-        b2=new JButton("biale");
-        b2.setBounds(550,100,100,30);
-        b2.addActionListener(this);
+                double roundOffPowierzchniaScian = (double) Math.round(powierzchniaScian*100)/100;
+                String resultPowierzchniaScian = String.valueOf(roundOffPowierzchniaScian);
 
-        b3=new JButton("biale");
-        b3.setBounds(550,150,100,30);
-        b3.addActionListener(this);
-        b4=new JButton("biale");
-        b4.setBounds(550,200,100,30);
-        b4.addActionListener(this);
-        b5=new JButton("biale");
-        b5.setBounds(550,250,100,30);
-        b5.addActionListener(this);
+                double roundOffscianyDoPolowy = (double) Math.round(scianyDoPolowy*100)/100;
+                String resultScianyDoPolowy = String.valueOf(roundOffscianyDoPolowy);
 
-        //dodajemy elementy do panelu f
+                textField1.setText(resultPowierzchnia);
+                polePodlogiText.setText(resultPowierzchniaPodlogi);
+                wallsArea.setText(resultPowierzchniaScian);
 
-        f.add(t1); f.add(t2); f.add(l1);f.add(t3);f.add(t4);f.add(t5);f.add(t6);
-        f.add(t7); f.add(t8); f.add(t9);f.add(t10);f.add(t11);f.add(t13);f.add(t12);
-        f.add(b1);f.add(b2);f.add(b3);f.add(b4);f.add(b5);
-        f.setSize(800,500);
-        f.setLayout(null);
-        f.setVisible(true);
-    }
-    public void actionPerformed(ActionEvent e) {
-        String s1=t1.getText();
-        String s2=t6.getText();
-        int a=Integer.parseInt(s1);
-        int b=Integer.parseInt(s2);
-        int c=a*b;
+            }
+        });
+        dlugoscSciany1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        String dl2=t2.getText();
-        String wys2=t7.getText();
-        int dl22=Integer.parseInt(dl2);
-        int wys22=Integer.parseInt(wys2);
-        int pole2 = dl22*wys22;
+            }
+        });
+        wysokoscSciany1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        String dl3=t3.getText();
-        String wys3=t8.getText();
-        int dl33=Integer.parseInt(dl3);
-        int wys33=Integer.parseInt(wys3);
-        int pole3 = dl33*wys33;
+            }
+        });
+        dlugoscSciany2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        String dl4=t4.getText();
-        String wys4=t9.getText();
-        int dl44=Integer.parseInt(dl4);
-        int wys44=Integer.parseInt(wys4);
-        int pole4 = dl44*wys44;
+            }
+        });
 
-        String dl5=t5.getText();
-        String wys5=t10.getText();
-        int dl55=Integer.parseInt(dl5);
-        int wys55=Integer.parseInt(wys5);
-        int pole5 = dl55*wys55;
 
-        int suma = c+pole2+pole3+pole4+pole5;
-        String result=String.valueOf(suma);
-        t11.setText(result);
-
+        getQuote.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             double powierzchniaCalkowita = Double.parseDouble(textField1.getText());
+             double cena = cenaZaMetr;
+             quotePrice = (powierzchniaCalkowita * cena);
+             //quoteFloor.setText(String.valueOf(quotePrice));
+            }
+        });
+        HelpMeasuring.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame contact = new JFrame("contact");
+            }
+        });
+        siakieLVTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField2.setText("siakie LVT");
+                cenaZaMetr = 8.0;
+                cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+                cenaZaPodloge = cenaZaPodloge * 8.0;
+                quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
+        TakieLVT.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField2.setText("Takie LVT");
+                cenaZaMetr = 4.9;
+                cenaZaPodloge = Double.parseDouble(polePodlogiText.getText()) ;
+                System.out.println(cenaZaPodloge);
+                cenaZaPodloge = cenaZaPodloge * 4.9;
+                System.out.println(cenaZaPodloge);
+                quoteFloor.setText(String.valueOf(cenaZaPodloge));
+            }
+        });
     }
 
     public static void main(String[] args) {
-        new TextFieldExample();
-    } }
+        JFrame frame = new JFrame("chujMi");
+        frame.setContentPane(new chujMi().MainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
+    }
+
+}
